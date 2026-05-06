@@ -7,6 +7,7 @@ public class JavaStarter {
         /*
         문장 주석
          */
+
         String title="Java 변수와 자료형";
         int studyMinutes=90;
         int targetMinutes=120;
