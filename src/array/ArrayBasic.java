@@ -19,9 +19,26 @@ public class ArrayBasic {
         //numbers[4]="메롱"; (x)
         numbers[3]=numbers[0]+20; //numbers[3] 영역에 20이란 값 대입
         numbers[4]=100;
-        //numbers[5]=10; (x) 인덱스 크기 < 배열
+        //numbers[5]=10; (x) 인덱스 크기 < 배열, 배열 길이 벗어난 인덱스, 빨간 줄 뜨지 않으니 조심
 
         //4. 배열의 길이
         System.out.println("배열의 길이: "+numbers.length);
+
+        //5. 배열의 순회
+        for(int i=0;i< numbers.length;i++){
+            System.out.println((i+1)+"번째 값: "+numbers[i]);
+        }
+
+        //배열의 순회 forEach (향상된 for문), 배열에서 유용
+        for(int n : numbers){
+            //iter
+            // for( 배열 안의 값 받을 변수 선언 : 반복 돌릴 배열)
+            //for-each문 동작: numbers[0]의 값->n 전달되어 반복문 한 바퀴 실행, numbers[1]의 값->n 전달되어 반복문 한 바퀴 실행....
+            System.out.println(n);
+            //for 장점: 직접 범위 지정 가능 vs for-each 장점: 범위 지정 필요 없음(전체 범위)
+            //무조건 범위는 배열의 처음부터 끝까지 설정(물론, 중간에 break, continue 가능)
+
+        }
+        System.out.println(numbers);
     }
 }
