@@ -1,3 +1,5 @@
+package basic.array;
+
 public class JavaStarter {
     public static void main(String[] args) {
         //control 마우스 휠 글자 크기 변경 가능
@@ -42,6 +44,8 @@ public class JavaStarter {
 
         //sout : 인텔리제이 출력 함수 생성
         //실행 단축키 control+shift+R
+
+
 
     }
 }

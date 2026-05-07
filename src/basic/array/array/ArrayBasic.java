@@ -1,4 +1,6 @@
-package array;
+package basic.array.array;
+
+import java.util.Arrays;
 
 public class ArrayBasic {
     public static void main(String[] args) {
@@ -39,6 +41,18 @@ public class ArrayBasic {
             //무조건 범위는 배열의 처음부터 끝까지 설정(물론, 중간에 break, continue 가능)
 
         }
-        System.out.println(numbers);
+
+        //배열 내부 문자열 형태로 한 번에 출력
+        System.out.println(Arrays.toString(numbers));
+
+
+        //배열 쉽게 초기화 하기
+        int[] pointList={10, 20, 30, 40};
+        String[] pets={"멍멍", "미야오", "짹짹", "그르릉"};
+        //크기 고정됨
+        //pets={"멍멍", "미야오", "짹짹"}; (x)
+        pets=new String[]{"멍멍", "야옹", "짹짹"};
+        //선언 당시에 크기가 고정되고, 이 크기는 변할 수 없음
+        //만약 혹시라도 크기를 늘리거나 줄이고 싶다면 배열을 새로 만들어 값을 옮겨야 함
     }
 }
