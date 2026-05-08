@@ -42,13 +42,13 @@ public class SprintLogApp {
 
         System.out.println("지금까지 생성된 학습 기록 수: "+LearningLog.getTotalCreateCount());
         //javaLog.totalCreateCount 문제: totalCreatCount 는 static 변수인데 객체 javalog에서 찾으려고 하는 것
-        //totalCreateCount는 객체마다 생성된 것이 아니라 별도의 공간(LearningLog.totalCreateCount)에 있는 것
+        //totalCreateCount는 객체마다 생성된 것이 아니라 별도의 공간(LearningActivity.totalCreateCount)에 있는 것
         //static 변수나 메서드는 객체마다 가지고 있는 값이 아니기 때문에
         //값을 참조할 때 선언된 클래스의 이름으로 참조할 수 있음
         //static 붙지 않으면 javaLog.getTotalCreateCount() 객체로 접근해야
         //!: static 변수를 얻어오는 메소드를 일반 메소드로 선언할 이유 없음
         //static 메서드로 선언하자
-        //LearningLog.getTotalCreateCount() 공유된 하나의 메서드 값을 얻기 위해서도 LearningLog 클래스로 선언
+        //LearningActivity.getTotalCreateCount() 공유된 하나의 메서드 값을 얻기 위해서도 LearningActivity 클래스로 선언
 
     }
 

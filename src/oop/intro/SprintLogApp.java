@@ -30,7 +30,7 @@ public class SprintLogApp {
         loopLog.minutes = 120;
         loopLog.publicLog = true;
 
-        //모두 LearningLog 타입
+        //모두 LearningActivity 타입
         LearningLog[] logs={javaLog, gitLog, conditionLog, loopLog};
 
         System.out.println("=== 객체로 관리하는 학습 기록 ===");

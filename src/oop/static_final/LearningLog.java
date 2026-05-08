@@ -14,7 +14,7 @@ public class LearningLog {
     //상수는 고정된 불변의 값을 의미, 모든 객체가 하나의 값을 고유하며, 코드로 절대 수정하지 못하는 값
 
     private static int totalCreateCount=0;
-    //지금까지 LearningLog 객체가 몇 개 만들어졌는지 세는 변수
+    //지금까지 LearningActivity 객체가 몇 개 만들어졌는지 세는 변수
 
     private final long id;
     //객체가 생성된 수에 맞게 id 개수 올라감
@@ -64,7 +64,7 @@ public class LearningLog {
         //객체 생성되면 생성자 호출, totalCreate값 하나씩 올라갈 것
         //객체 -> stack(java(0x10) git(0x20) encap(0x30))
         //Heap(0x10(title) 0x20(git) 0x30(encap))
-        //Data(LearningLog: totalCreateCount) - 별도의 공간에 생성된 static 변수의 값을 올려야
+        //Data(LearningActivity: totalCreateCount) - 별도의 공간에 생성된 static 변수의 값을 올려야
         //static 변수로 세팅한 값은 객체마다 따로 생성된 값
         //totalCreateCount는 static으로 선언되어 하나의 값을 공유하는 것(각각 가지지 x)으로 객체와 무관한 상태가 됨
         //id는 객체 생성될 때 정해지는 값, 객체 생성된 후부터 setId...할 수 없게 만드는 final
