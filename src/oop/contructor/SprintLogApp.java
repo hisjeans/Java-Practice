@@ -1,6 +1,6 @@
 package oop.contructor;
 
-public class SpringLogApp {
+public class SprintLogApp {
     public static void main(String[] args) {
 
 
