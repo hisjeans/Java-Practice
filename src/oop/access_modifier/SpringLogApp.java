@@ -1,11 +1,11 @@
-정package oop.access_modifier;
+package oop.access_modifier;
 
 public class SpringLogApp {
     public static void main(String[] args) {
 
 
         //객체 생성
-        LearningLog javalog=new LearningLog("Java 시작",40/*,true*/);
+        LearningLog javaLog=new LearningLog("Java 시작",40/*,true*/);
         //'LearnigLog()' 생성자
         //"LearnigLog(String title, int minutes, boolean publicLog가 받음
         //객체 생성하자마자 printsummary 호출하면 생성자가 호출되고 title, minutes 값을 넣지 않아 null이 나옴
@@ -25,8 +25,20 @@ public class SpringLogApp {
         //javalog.minutes=-3899;
         //javalog.publicLog=false; 모든 필드가 private 접근 제한자를 지정했기 때문에 값을 참조하거나 수정이 불가능해짐
 
-        //javalog.minutes=100; 와 같이 제대로 된 값 또한 넣지 못하는 문제 발생
-        javalog.printSummary();
+        javaLog.extendStudy(200);
+        javaLog.changTitle("Java 객체지향과 캡슐화");
+        javaLog.hideFromPublic();
 
+        gitLog.extendStudy(45);
+        gitLog.openToPublic();
+
+
+        //외부에서는 public 호출만 가능하기에 private javaLog.normalizeTitle(); 호출 불가능
+        //javalog.minutes=100; 와 같이 제대로 된 값 또한 넣지 못하는 문제 발생
+        javaLog.printSummary();
+        //printSummary 요약
+        //printSummary에 public 여부는 보여주지 않고 있음
+
+        gitLog.printSummary();
     }
 }

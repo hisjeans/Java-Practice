@@ -43,35 +43,89 @@ public class LearningLog {
     }
 
     LearningLog(String title, int minutes, boolean publicLog){
-        this.title=title;
+        this.title=normalizeTitle(title); //객체를 생성할 때 전달하는 title 또한 문제 생길 수 있기 때문에 검사
         this.minutes=minutes;
         this.publicLog=publicLog;
 
     }
-    //private 접근 제한을 지정하니 제대로 된 값도 수정이 불가능한 것 확인
+    //2. private 접근 제한을 지정하니 제대로 된 값도 수정이 불가능한 것 확인
     //필드 값을 대신 받아 할당하고, 값을 돌려줄 수 있는 메서드를 활용해 값을 보호
     //이 때 사용하는 메서드의 이름을 getter(값을 얻을 때 사용), setter(값을 set할 때 사용)라고 함
+    //set+필드이름 으로 짓는 것이 관음
     //가장 민감한 minutes
     //메서드는 private으로 하면 이 안에서 밖에 안 되기 때문에 public 사용
     //setMinutes를 불러야 하는 상황이 됨
-    public void setMinutes(int minutes){
-        if(minutes<=0){
+    public void extendStudy(int additionalMinutes){
+        if(additionalMinutes<=0){
             System.out.println("잘못된 공부 시간입니다.");
             //break; 반복문이 아니기 때문에 넣을 수 없음
             return; //void 메서드에서 return은 메서드를 강제종료
             //void 메서드에서만 사용 가능한 return
         }
-        this.minutes+=minutes;
+        this.minutes+=additionalMinutes;
         //방어로직을 메소드에 작성 가능
     }
     //setTitle, setPublicLog
 
-    void printSummary(){
-        System.out.println(title+" - "+minutes+"분");
+    public void changTitle(String newTitle){
+        //전달받은 title을 변경받는 것에 집중
+        this.title=normalizeTitle(newTitle);
+    }
+
+    //메서드 생성 to 역할 분명
+    //정보 은닉은 외부에 공개할 필요 없는 내용 숨김
+    //to 문자열 return, string 타입으로 변환
+    //이 메서드는 외부에서 알 필요 없고, 호출할 일도 없기 때문에 private으로 설정
+    //이 클래스 안에서만 사용할 수 있도록 범위를 지정, 객체 내부에서만 쓰는 규칙
+    private String normalizeTitle(String newTitle) {
+        if(newTitle ==null|| newTitle.isBlank()){
+            //||_OR는 좌항이 논리식이면 우항도 논리식이어야
+            //null이거나 공백이라면 true
+            //and 논리연산자: 둘 중 하나라도 false->false, 모두 true이어야
+            //and 대표적인 사례: 로그인(ID, pw 모두 true이어야)
+            return "제목 없음";
+        }
+        return newTitle;//문제가 없다면
+    }
+
+    public void openToPublic(){
+        this.publicLog=true;
+
+    }
+    public void hideFromPublic(){
+        this.publicLog=false;//publicLog 필드는 true, false 밖에 들어가지 못함
+        //메서드 이름 통해 공개, 숨김 의미 표현
+    }
+    void printSummary() {
+        //if(this.publicLog)-else 로도 작성 가능하지만 코드 간결하지 못함 => 3항 연산식(피연산자 3개)
+        //3항 연산식: 조건식의 결과에 따라 변수에 대입할 값을 다르게 할 수 있는 문법
+        //논리형 조건식 ? 좌항 : 우항
+        //논리형 조건식 true라면 좌항의 값이, false라면 우항의 값이 도출
+        String visibility=publicLog? "공개" : "비공개"; //publicLog true->공개, false->비공개
+        System.out.println(this.title + " - " + this.minutes + "분 - ");
     }
 
     boolean needsReview(){
         return minutes<60;
     }
 
+    //get+이름: getter 관례
+    //getTitle 단축
+
+    //외부로 필드값을 돌려주는 getter 메서드
+    //get+필드이름으로 지어주는 것이 관례
+    //boolean 타입의 값을 돌려주는 getter는 is로 시작하도록 이름 지음
+    //값을 변경하고 싶지 않을 때, private으로 막고 의도적으로 setter 메서드를 제공하지 않는 경우도 존재
+    public String getTitle() {
+        return title;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    //boolean 타입 getter메소드는 is로 시작
+    public boolean isPublicLog() {
+        return publicLog;
+    }
 }
