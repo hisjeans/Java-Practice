@@ -58,9 +58,7 @@ public class LearningActivity {
         //this() 문법으로 자기 자신의 다른 생성자를 호출하는 것 가능
         //title(string), minutes(int), true(boolean) 받을 수 있는 다른 생성자("Learning:og(String title, int minutes, boolean publicActivity") 부를 것
     }
-    public long getId(){
-        return id;
-    }
+
     public LearningActivity(String title, int minutes, boolean publicActivity){
         //객체 3개씩 생성될 때 고유번호 부여하고 싶음
         totalCreateCount++;
@@ -150,21 +148,30 @@ public class LearningActivity {
 
         return totalCreateCount;
     }
+    public static int getReviewThresholdMinutes(){
+        return REVIEW_THRESHOLD_MINUTES;
+    }
+    public long getId(){
+        return id;
+    }
     //외부로 필드값을 돌려주는 getter 메서드
     //get+필드이름으로 지어주는 것이 관례
     //boolean 타입의 값을 돌려주는 getter는 is로 시작하도록 이름 지음
     //값을 변경하고 싶지 않을 때, private으로 막고 의도적으로 setter 메서드를 제공하지 않는 경우도 존재
     public String getTitle() {
+
         return title;
     }
 
 
     public int getMinutes() {
+
         return minutes;
     }
 
     //boolean 타입 getter메소드는 is로 시작
     public boolean ispublicActivity() {
+
         return publicActivity;
     }
 }

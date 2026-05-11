@@ -59,6 +59,7 @@ public class LearningLog {
     }//this.title, this.miutes 생략된 것, 이 메서드를 호출한 그 객체의 title, minutes
 
     boolean needsReview(){
+
         return minutes<60;
     } //메서드를 호출한 그 객체의 minutes
     //메서드에서 특정 필드 지정하기 위해서도 this
