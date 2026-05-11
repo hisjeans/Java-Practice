@@ -22,23 +22,16 @@ public class LectureLog extends LearningActivity implements Reviewable,Shareable
         this.instructorName=normalizeInstructorName(instructorName); //부모가 알 수 없는 영역, 유효성 검증은 자식이 해야
     }
 
-    //메서드 재정의(override)
-    //부모가 물려준 메서드가 자식에게 맞지 않거나 부족할 경우 자식이 재 정의해서 사용 가능
-    //오버라이딩 규칙: 1. 메서드 이름이 같아야 2. 리턴 타입이 같아야 3. 매개변수의 선언이 일치해야
+
+
     @Override
-    public void printSummary(){
-        System.out.println("[강의] #"+getId()+" "+getTitle()+" - "+getMinutes()+"분 - 강사: "+instructorName);
-    }
-    //printsummary 추상 메서드
-
-
-
     public boolean needsReview(){
         return getMinutes()<60;
     }
 
+    @Override
     public void printReviewTarget(){
-        printSummary();
+        System.out.println("[복습 권장] " + getTitle() + " (" + getMinutes() + "분)");
     }
 
 
@@ -51,11 +44,23 @@ public class LectureLog extends LearningActivity implements Reviewable,Shareable
         return instructorName; //null이 아니거나 공백도 아니라면
     }
 
+    @Override
     public boolean canShare(){
         return ispublicActivity();
     }
 
+    @Override
     public String getSharTitle(){
         return getTitle();
+    }
+
+    @Override
+    public String getActivityType(){
+        return "강의";
+    }
+
+    @Override
+    public String getDetailText(){
+        return "강사: "+instructorName;
     }
 }

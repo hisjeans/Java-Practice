@@ -7,6 +7,10 @@ import oop.abstract_interface.domain.ReadingLog;
 import oop.abstract_interface.policy.Reviewable;
 import oop.abstract_interface.policy.Shareable;
 
+import oop.abstract_interface.printer.ActivityPrinter;
+import oop.abstract_interface.printer.CompactActivityPrinter;
+
+
 public class SprintLogApp {
     public static void main(String[] args) {
 
@@ -19,10 +23,15 @@ public class SprintLogApp {
         //추상클래스는 스스로의 객체를 생성할 수 없고, 자식에 의해 생성될 뿐
 
         LearningActivity[] activities = {javaLecture, gitPractice, oopPractice, oopBook};
+        //javaLecture...자식 객체들이 printer 메소드 호출되었을 때 자식은 부모의 역할을 완벽히 대신할 수 있음 => LSP
 
-        System.out.println("=== 학습 활동 목록 ===");
+        //인터페이스 activity printer의 역할을 잡았기 때문에 기존 객체->새로운 객체로만 변경하면 됨
+        //기능확장에는 열려 있고 변경에는 닫혀 있음 => OCP
+        ActivityPrinter printer=new CompactActivityPrinter();
+
+        System.out.println("=== 간단 학습 활동 목록 ===");
         for (int i = 0; i < activities.length; i++) {
-            activities[i].printSummary(); //abstract가 printSummary()는 구현 강제하도록 함
+            printer.print(activities[i]);
         }
 
         //인터페이스 특징: 다형성이란 부모 타입의 변수에 자식 타입의 객체가 들어올 수 있다는 것

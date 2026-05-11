@@ -14,11 +14,6 @@ public class ReadingLog extends LearningActivity implements Reviewable, Shareabl
 
     }
 
-    @Override
-    public void printSummary() {
-        System.out.println("[독서] #" + getId() + " " + getTitle() + " - " + getMinutes()
-                + "분 - 책: " + bookTitle);
-    }
 
     @Override
     public boolean needsReview() {
@@ -27,7 +22,7 @@ public class ReadingLog extends LearningActivity implements Reviewable, Shareabl
 
     @Override
     public void printReviewTarget() {
-        printSummary();
+        System.out.println("[복습 권장] " + getTitle() + " (" + bookTitle + ")");
     }
 
     @Override
@@ -43,4 +38,13 @@ public class ReadingLog extends LearningActivity implements Reviewable, Shareabl
     //역할 담당하는 것이 인터페이스
     //인터페이스는 다중상속 가능 클래스는 단일 상속만 가능
 
+    @Override
+    public String getActivityType(){
+        return "독서";
+    }
+
+    @Override
+    public String getDetailText(){
+        return "책: "+bookTitle;
+    }
 }
