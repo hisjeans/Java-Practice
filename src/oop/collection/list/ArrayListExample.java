@@ -1,11 +1,11 @@
-package oop.collection;
+package oop.collection.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ArrayLsitExample {
+public class ArrayListExample {
     public static void main(String[] args) {
         String[] arr=new String[50]; //크기 늘어나거나 줄어들지 않음, String 기본값 null
 
