@@ -130,6 +130,41 @@ public class Main {
         List<String> foods=List.of("떡볶이", "아부라소바", "라면", "김치찌개", "삼겹살", "마라탕");
         List<String> filter2=FilterApple.filter(foods, f -> f.length()==3);
         System.out.println(filter2);
+
+        //조건에 맞게 거름 (필터링) - 기존 사과 개수 줄어들 수 있음, but 사과의 원형은 그대로 유지
+
+        System.out.println("===================================================");
+
+        // 새로운 요구사항: 사과의 색상만 뽑아 리스트로 받아보고 싶음
+        // 매핑은 개수는 그대로 유지, 원형 사과가 아닌 컬러 나옴
+        List<Color> colorList=MappingApple.mapplingAppleByColor(appleBasket);
+        System.out.println("colorList = " + colorList);
+
+
+        // 이번에는 사과의 무게만 뽑아보자
+        // 나중에는 사과 리스트 말고 다른 리스트를 줄 수도 있음
+        List<Integer> map1=MappingApple.map(appleBasket, new GenericFunction<Apple, Integer>() {
+            @Override
+            public Integer apply(Apple apple){
+                return apple.getWeight();
+            }
+        }); //x: apple, y: int(무게 타입)
+        System.out.println("map1 = " + map1);
+
+        System.out.println("===================================================");
+
+        //숫자 리스트를 주면 제곱된 수를 가져와
+        List<Integer> map2=MappingApple.map(numbers, n->(int)Math.pow(n,4));
+        // 3제곱부터 길어지는데 줄일 수 없을까? n -> Math(모든 정보 static, 무조건 클래스의 이름으로 참조)
+        // pow는 double return-><Double> or (int)
+        System.out.println("map2 = " + map2); // 4 제곱된 수 모여있는 리스트 반환
+
+        System.out.println("===================================================");
+
+        // 음식 리스트를 주면 첫글자만 뽑는 조건
+        // 단일 문자 뽑는 charAt
+        List<Character> map3=MappingApple.map(foods, f -> f.charAt(0));
+        System.out.println("map3 = " + map3);
     }
 
 }
