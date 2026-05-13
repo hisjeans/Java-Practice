@@ -99,14 +99,37 @@ public class Main {
         System.out.println("===================================================");
 
 
-        //색깔이 빨강 혹은 초록이면서, 무게는 200g 미만
+        //색깔이 빨강 혹은 초록이면서, 무게는 150g 초과이어야
         //논리 연산에서 and가 or 보다 우선
         List<Apple> apples3=FilterApple.filterApple(appleBasket,
-                apple-> (apple.getColor()==GREEN||apple.getColor()==RED)&&apple.getWeight()<200
-        );
+                apple-> (apple.getColor()==GREEN
+                        ||apple.getColor()==RED)
+                        &&apple.getWeight()<150);
+        //apple.getColor()==RED || apple.getColor()==GREEN && apple.getWeight -> RED는 무게와 상관없이 모두 출력됨, and>>연산자 우선순위>>or
+
         for (Apple apple : apples3) {
             System.out.println(apple);
         }
+
+        System.out.println("===================================================");
+
+        //FilterApple은 Apple 타입만 거를 수 있지만 apple에 LectureLog, 숫자, 음식들이 올 수 있음
+        //여러가지 타입의 객체를 필터링
+        List<Integer> numbers=List.of(1,2,3,4,5,6,7,8,9,10);
+        List<Integer> filter1=FilterApple.filter(numbers, n->n%2==0); //짝수만 true로 만들고 홀수는 false로 만들어 리스트에 담기지 않게 함
+        System.out.println(filter1);
+        /*람다식 사용하지 않으면
+        List<Integer> filter1=FilterApple.filter(numbers, new GenericPredicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) {
+                return integer%2==0;
+            }
+        }); //짝수만 true로 만들고 홀수는 false로 만들어 리스트에 담기지 않게 함
+        */
+
+        List<String> foods=List.of("떡볶이", "아부라소바", "라면", "김치찌개", "삼겹살", "마라탕");
+        List<String> filter2=FilterApple.filter(foods, f -> f.length()==3);
+        System.out.println(filter2);
     }
 
 }
